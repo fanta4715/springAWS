@@ -1,5 +1,6 @@
 package com.fanta4715.book.springboot.domain.post;
 
+import com.fanta4715.book.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @Getter//롬복 어노테이션
 @NoArgsConstructor//롬복 어노테이션
 @Entity//JPA 어노테이션
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,5 +33,10 @@ public class Posts {
         this.title=title;
         this.content=content;
         this.author=author;
+    }
+
+    public void update(String title, String content){
+        this.title=title;
+        this.content=content;
     }
 }
